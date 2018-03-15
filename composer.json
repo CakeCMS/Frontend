@@ -1,0 +1,66 @@
+{
+    "name"         : "cake-cms/frontend",
+    "type"         : "cakephp-plugin",
+    "description"  : "CakePHP CMS frontend theme.",
+    "license"      : "MIT",
+    "keywords"     : [
+        "cakephp",
+        "cms cakephp"
+    ],
+    "authors"      : [
+        {
+            "name"  : "Cheren",
+            "email" : "kalistratov.s.m@gmail.com"
+        }
+    ],
+    "require"      : {
+        "cake-cms/core" : "@dev"
+    },
+    "require-dev"  : {
+        "cake-cms/test"            : "@dev",
+        "jbzoo/phpunit"            : "~2.1",
+        "cakephp/bake"             : "~1.1",
+        "satooshi/php-coveralls"   : "^1.0.2",
+        "cakephp/plugin-installer" : "^0.0.15",
+        "psy/psysh"                : "@stable"
+    },
+    "autoload"     : {
+        "psr-4" : {
+            "Frontend\\" : "./src"
+        }
+    },
+    "autoload-dev" : {
+        "psr-4" : {
+            "Frontend\\Test\\" : "./tests",
+            "Core\\"          : "./vendor/cake-cms/core",
+            "Test\\App\\"     : "./tests/App/src"
+        }
+    },
+    "scripts"      : {
+        "test"               : [
+            "@manifest",
+            "@autoload",
+            "@phpunit",
+            "@phpmd",
+            "@phpcs",
+            "@phpcpd",
+            "@phploc"
+        ],
+        "build-test-app"     : "sh ./scripts/prepare-test-app.sh",
+        "update-all"         : [
+            "composer self-update --no-interaction",
+            "composer update --no-interaction --optimize-autoloader"
+        ],
+        "manifest"           : "composer validate --no-interaction",
+        "phploc"             : "php ./vendor/phploc/phploc/phploc ./src --verbose",
+        "autoload"           : "composer dump-autoload --optimize --no-interaction",
+        "phpcpd"             : "php ./vendor/sebastian/phpcpd/phpcpd ./src --verbose",
+        "coveralls"          : "php ./vendor/satooshi/php-coveralls/bin/coveralls --verbose",
+        "phpunit"            : "php ./vendor/phpunit/phpunit/phpunit --configuration ./phpunit.xml.dist",
+        "phpmd"              : "php ./vendor/phpmd/phpmd/src/bin/phpmd ./src text codesize, unusedcode, naming",
+        "phpcs"              : "php ./vendor/squizlabs/php_codesniffer/bin/phpcs ./src --standard=./vendor/cake-cms/test/src/phpcs/CakeCMS/ruleset.xml --report=full",
+        "post-autoload-dump" : [
+            "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
+        ]
+    }
+}
