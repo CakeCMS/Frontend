@@ -11,15 +11,21 @@
  * @copyright   MIT License http://www.opensource.org/licenses/mit-license.php
  * @link        https://github.com/CakeCMS/Frontend".
  * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
+ * @var         \Core\View\AppView $this
  */
+
+echo $this->partial('init');
 ?>
-<html>
 <head>
+    <?= $this->Document->head() ?>
 </head>
 <body>
-<?= $this->Flash->render() ?>
-<div class="content-wrapper">
-    <?= $this->fetch('content') ?>
-</div>
+    <?= $this->Flash->render() ?>
+    <div class="container clearfix">
+        <?= $this->fetch('content') ?>
+    </div>
 </body>
+<?= $this->Document->assets('script') ?>
+<?= $this->fetch('script_bottom') ?>
+<?= $this->Js->getBuffer() ?>
 </html>
