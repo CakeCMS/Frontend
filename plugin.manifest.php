@@ -11,6 +11,7 @@
  * @copyright   MIT License http://www.opensource.org/licenses/mit-license.php
  * @link        https://github.com/CakeCMS/Frontend".
  * @author      Sergey Kalistratov <kalistratov.s.m@gmail.com>
+ * @demo        https://pixinvent.com/materialize-material-design-admin-template/landing/
  */
 
 return [

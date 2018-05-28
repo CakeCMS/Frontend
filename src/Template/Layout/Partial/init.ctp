@@ -18,9 +18,11 @@ $this->Assets
     ->jquery()
     ->fontAwesome()
     ->jqueryFactory()
-    ->materialize();
+    ->materialize()
+    ->tableCheckAll();
 
 $this->Html->script([
+    'Core.admin/widget/toolbar.js',
     'Frontend.template.js'
 ], ['block' => 'assets']);
 
@@ -34,5 +36,7 @@ $this->Document->meta([
     '<meta http-equiv="X-UA-Compatible" content="IE=edge">',
     '<meta name="viewport" content="width=device-width, initial-scale=1">',
 ], 'meta');
+
+$this->Js->widget('.jsToolbar', 'JBZooToolbar');
 
 echo $this->Document->type();

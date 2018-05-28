@@ -14,19 +14,15 @@
  * @var         \Core\View\AppView $this
  */
 
-echo $this->partial('init');
-?>
-<head>
-    <?= $this->Document->head() ?>
-</head>
-<body>
-    <?= $this->Flash->render() ?>
-    <div class="container clearfix">
-        <?= $this->partial('toolbar') ?>
-        <?= $this->fetch('content') ?>
+use Core\Utility\Toolbar;
+
+$toolbar     = Toolbar::getInstance();
+$toolbarHtml = $toolbar->render();
+
+if ($toolbarHtml) : ?>
+    <div class="ck-toolbar grey lighten-4 jsToolbar">
+        <div class="ck-toolbar-content">
+            <?= $toolbarHtml ?>
+        </div>
     </div>
-</body>
-<?= $this->Document->assets('script') ?>
-<?= $this->fetch('script_bottom') ?>
-<?= $this->Js->getBuffer() ?>
-</html>
+<?php endif;

@@ -14,6 +14,13 @@
 if (typeof jQuery != 'undefined') jQuery(function ($) {
     $('html.no-js').removeClass('no-js').addClass('js-ready');
 
+    $('.hasTooltip').tooltip({
+        delay : 10
+    });
+
+    $('.jsCheckAll').checkAll();
+    $('select').material_select();
+
     $('.flash-message .jsFlashClose').click(function () {
         $(this).closest('.flash-message').animate({
             height       : 0,
